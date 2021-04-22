@@ -1,5 +1,6 @@
 from django import forms
-from .models import Project
+from project_manage.models import Project, Module
+
 
 # 优点：
 # 实现一个表单变得很简单
@@ -17,4 +18,11 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ['name', 'describe', 'status']
+        exclude = ['update_time', 'create_time']
+
+class ModuleForm(forms.ModelForm):
+
+    class Meta:
+        model = Module
+        fields = ['project', 'name', 'describe']
         exclude = ['update_time', 'create_time']
